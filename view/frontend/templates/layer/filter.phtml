@@ -43,11 +43,11 @@
                         }
                     }
                 </script>
-            <?php break; ?>
-            <?php else: ?>
+            <?php //continue; ?>
+<?php endif;?>
             <?php if ($filterItem->getCount() > 0): ?>
                 <a <?php echo in_array($filterItem->getValue(), $requestArray) ? 'class="active"' : ''  ?> href="<?php echo $block->escapeUrl($url) ?>">
-                    <?php if($attributeModel && $attributeModel->getFrontendInput() == 'multiselect'): ?>
+                    <?php if($attributeModel):// && $attributeModel->getFrontendInput() == 'multiselect'): ?>
                         <input type="checkbox" <?php echo in_array($filterItem->getValue(), $requestArray) ? 'checked="checked"' : ''  ?> />
                     <?php endif; ?>
                     <?php echo $filterItem->getLabel() ?>
@@ -58,15 +58,15 @@
                 </a>
             <?php else:?>
                 <?php if($attributeModel && $attributeModel->getFrontendInput() == 'multiselect'): ?>
-            <input type="checkbox" disabled="disabled" />
-            <?php endif; ?>
+            		<input type="checkbox" disabled="disabled" />
+            	<?php endif; ?>
                 <?php echo $filterItem->getLabel() ?>
-                <?php if ($showCount): ?>
-                <span class="count"><?php echo $filterItem->getCount()?><span class="filter-count-label">
-							<?php if ($filterItem->getCount() == 1):?><?php echo __('item')?><?php else:?><?php echo __('items') ?><?php endif;?></span></span>
-            <?php endif; ?>
-            <?php endif; ?>
-            <?php endif; ?>
+                	<?php if ($showCount): ?>
+                		<span class="count"><?php echo $filterItem->getCount()?><span class="filter-count-label">
+				<?php if ($filterItem->getCount() == 1):?><?php echo __('item')?><?php else:?><?php echo __('items') ?><?php endif;?></span></span>
+            		<?php endif; ?>
+            	<?php endif; ?>
+            <?php //endif; ?>
         </li>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 </ol>
